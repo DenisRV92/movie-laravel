@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class ReviewService implements ReviewServiceInterface
 {
+    /**
+     * @param Request $request
+     * @param Movie $movie
+     * @return Movie[]
+     */
     public function store(Request $request, Movie $movie): array
     {
         $review = new Review;
@@ -22,6 +27,10 @@ class ReviewService implements ReviewServiceInterface
         return $response;
     }
 
+    /**
+     * @param int $userId
+     * @return array
+     */
     public function myReviews(int $userId): array
     {
         $user = auth()->user($userId);
