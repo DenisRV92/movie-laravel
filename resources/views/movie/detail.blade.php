@@ -80,7 +80,6 @@
         <div class="swiper-wrapper">
             <?php foreach($movie->gallery as $image): ?>
             <div class="swiper-slide">
-{{--                <img src="<?=$image?>" width="480px" height="300px" alt=""/>--}}
                 @if(Str::startsWith($image, 'public/'))
                     <img class="preview" src="{{ asset(Storage::url(Str::replaceFirst('public/', '', $image))) }}" alt="">
                 @else

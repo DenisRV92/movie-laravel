@@ -1,25 +1,17 @@
 <!DOCTYPE html>
-{{--<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">--}}
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Laravel</title>
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet"/>
 
-    {{--    <meta name="csrf-token" content="{{ csrf_token() }}">--}}
-
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Fonts -->
-    {{--    <link rel="preconnect" href="https://fonts.bunny.net">--}}
-    {{--    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet"/>--}}
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    {{--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">--}}
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
 
@@ -32,7 +24,8 @@
         width: 480px;
         object-fit: cover;
     }
-    .my-favorite{
+
+    .my-favorite {
         color: gold;
     }
 </style>
@@ -96,14 +89,14 @@
 </div>
 <div>
     <label for="sortDate">Сортировка по дате</label>
-    <select id="sortDate"  class="selectpicker selectpicker-sort-date">
+    <select id="sortDate" class="selectpicker selectpicker-sort-date">
         <option value="asc">По возрастанию</option>
         <option value="desc"> по убыванию</option>
     </select>
 </div>
 <div>
     <label for="sortRating">Сортировка по рейтингу</label>
-    <select id="sortRating"  class="selectpicker selectpicker-sort-rating">
+    <select id="sortRating" class="selectpicker selectpicker-sort-rating">
         <option value="asc">По возрастанию</option>
         <option value="desc"> по убыванию</option>
     </select>
@@ -139,8 +132,6 @@
 </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/js/bootstrap-select.js"></script>--}}
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
@@ -150,7 +141,7 @@
         $('.selectpicker').select2();
 
     });
-    $('.search').on('input', function(e) {
+    $('.search').on('input', function (e) {
         let searchTerm = $(this).val();
         $.ajax({
             url: '/movie/filter',
@@ -161,10 +152,10 @@
             data: {
                 search: searchTerm,
             },
-            success: function(response) {
+            success: function (response) {
                 $('.movie').html(response);
             },
-            error: function(response) {
+            error: function (response) {
                 console.log(response);
             }
         });
@@ -261,9 +252,6 @@
         });
     });
     $('body').on('click', '.favorite', function (event) {
-        {{--let user = <?php echo auth()->user()?>--}}
-        {{--    let user = <?php echo json_encode(auth()->user()); ?>;--}}
-
         event.preventDefault();
         let movieId = $(this).data('id');
         let favorite = $(this)
